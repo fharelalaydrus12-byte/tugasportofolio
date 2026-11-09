@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portofolio M. Farel, pelajar TJKT dan Junior Network Engineer pemula.">
+  <title>M. Farel | Junior Network Engineer</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101f33;
+      --panel2: #142740;
+      --text: #edf5ff;
+      --muted: #a9bad0;
+      --accent: #39d5ff;
+      --accent2: #7c8cff;
+      --line: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at 80% 5%, #142c4a 0, transparent 30%), var(--bg);
+      color: var(--text); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(7,17,31,.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: 1px; font-size: 1.1rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 25px; list-style: none; color: var(--muted); font-size: .93rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { min-height: 590px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 45px; padding: 75px 0; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: 1.06; margin: 16px 0; letter-spacing: -2px; }
+    h1 span { color: var(--accent); }
+    .hero p { max-width: 610px; color: var(--muted); font-size: 1.06rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-block; padding: 12px 20px; border-radius: 9px; font-weight: 700; transition: .2s; }
+    .primary { background: var(--accent); color: #04111d; }
+    .primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px #39d5ff44; }
+    .secondary { border: 1px solid var(--line); color: var(--text); }
+    .secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .network-card {
+      position: relative; min-height: 330px; display: grid; place-items: center;
+      background: linear-gradient(145deg, #132b48, #0b1728);
+      border: 1px solid #294968; border-radius: 24px; overflow: hidden;
+      box-shadow: 0 25px 70px #0005;
+    }
+    .network-card::before, .network-card::after { content: ""; position: absolute; border: 1px solid #39d5ff33; border-radius: 50%; width: 250px; height: 250px; }
+    .network-card::after { width: 340px; height: 340px; }
+    .network-icon { z-index: 1; text-align: center; }
+    .network-icon .symbol { font-size: 5rem; color: var(--accent); line-height: 1.2; }
+    .network-icon strong { display: block; font-size: 1.1rem; letter-spacing: 2px; }
+    .network-icon small { color: var(--muted); }
+    section { padding: 75px 0; }
+    .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 12px; }
+    .section-intro { color: var(--muted); max-width: 680px; margin-bottom: 30px; }
+    .about-grid, .skill-grid, .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { background: linear-gradient(145deg, var(--panel), #0c192a); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+    .card h3 { margin-bottom: 9px; }
+    .card p, .card li { color: var(--muted); }
+    .info-list { list-style: none; }
+    .info-list li { padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .info-list li:last-child { border: 0; }
+    .info-list b { color: var(--text); }
+    .skill-grid { grid-template-columns: repeat(3, 1fr); }
+    .skill-card .icon { font-size: 1.7rem; margin-bottom: 12px; }
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-card { position: relative; overflow: hidden; }
+    .tag { display: inline-block; margin-top: 14px; padding: 5px 10px; border-radius: 30px; background: #39d5ff18; color: var(--accent); font-size: .78rem; }
+    .contact { text-align: center; background: linear-gradient(135deg, #10243b, #0a1727); border: 1px solid var(--line); border-radius: 22px; padding: 45px 25px; }
+    .contact p { color: var(--muted); margin: 10px auto 22px; max-width: 570px; }
+    footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: .88rem; }
+    @media (max-width: 760px) {
+      .nav-links { gap: 12px; font-size: .8rem; }
+      .hero { grid-template-columns: 1fr; padding: 60px 0; }
+      .network-card { min-height: 250px; }
+      .about-grid, .skill-grid, .project-grid { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+    }
+    @media (max-width: 430px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 15px 0; }
+      .nav-links { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">M.FAREL<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#keahlian">Keahlian</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Student • Future Network Engineer</div>
+        <h1>Halo, saya<br><span>M. FAREL.</span></h1>
+        <p>
+          Siswa kelas X jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT)
+          yang memiliki minat di bidang jaringan komputer, konfigurasi perangkat,
+          dan teknologi informasi. Saya sedang terus belajar untuk berkembang
+          menjadi seorang Junior Network Engineer.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#proyek">Lihat Portofolio</a>
+          <a class="btn secondary" href="#kontak">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="network-card" aria-label="Ilustrasi jaringan komputer">
+        <div class="network-icon">
+          <div class="symbol">⌘</div>
+          <strong>NETWORKING</strong>
+          <small>Connect • Configure • Learn</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="eyebrow">Perkenalan</div>
+        <h2 class="section-title">Tentang Saya</h2>
+        <p class="section-intro">Mengenal saya dan bidang teknologi yang sedang saya pelajari.</p>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Profil Singkat</h3>
+            <p>
+              Nama saya M. Farel. Saya merupakan pelajar kelas X yang mengambil
+              jurusan TJKT. Saya tertarik mempelajari cara komputer saling
+              terhubung, bagaimana jaringan dibangun, serta bagaimana menjaga
+              koneksi agar dapat berjalan dengan baik.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Informasi Pendidikan</h3>
+            <ul class="info-list">
+              <li><b>Nama:</b> M. Farel</li>
+              <li><b>Kelas:</b> X</li>
+              <li><b>Jurusan:</b> Teknik Jaringan Komputer dan Telekomunikasi</li>
+              <li><b>Bidang:</b> Junior Network Engineer (pemula)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="keahlian">
+      <div class="container">
+        <div class="eyebrow">Yang Sedang Dipelajari</div>
+        <h2 class="section-title">Keahlian & Kompetensi</h2>
+        <p class="section-intro">Dasar-dasar teknologi jaringan yang sedang saya pelajari dan kembangkan.</p>
+        <div class="skill-grid">
+          <article class="card skill-card">
+            <div class="icon">🌐</div>
+            <h3>Dasar Jaringan</h3>
+            <p>Memahami konsep LAN, WAN, topologi jaringan, IP address, dan perangkat jaringan.</p>
+          </article>
+          <article class="card skill-card">
+            <div class="icon">🖧</div>
+            <h3>Perangkat Jaringan</h3>
+            <p>Mengenal fungsi router, switch, access point, kabel UTP, dan konektor jaringan.</p>
+          </article>
+          <article class="card skill-card">
+            <div class="icon">⚙️</div>
+            <h3>Konfigurasi Dasar</h3>
+            <p>Belajar konfigurasi jaringan sederhana serta memahami pengaturan perangkat.</p>
+          </article>
+          <article class="card skill-card">
+            <div class="icon">🔌</div>
+            <h3>Kabel & Koneksi</h3>
+            <p>Mempelajari jenis kabel jaringan, susunan kabel UTP, dan konektivitas.</p>
+          </article>
+          <article class="card skill-card">
+            <div class="icon">💻</div>
+            <h3>Sistem Komputer</h3>
+            <p>Mengenal perangkat keras, perangkat lunak, dan dasar perawatan komputer.</p>
+          </article>
+          <article class="card skill-card">
+            <div class="icon">🛠️</div>
+            <h3>Troubleshooting</h3>
+            <p>Belajar mengenali masalah koneksi dan mencari solusi secara bertahap.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyek">
+      <div class="container">
+        <div class="eyebrow">Pengalaman Belajar</div>
+        <h2 class="section-title">Proyek & Praktik</h2>
+        <p class="section-intro">Contoh kegiatan portofolio yang dapat diisi dengan hasil praktik asli dari sekolah.</p>
+        <div class="project-grid">
+          <article class="card project-card">
+            <h3>01. Membuat Kabel LAN</h3>
+            <p>Praktik mengenal kabel UTP, konektor RJ45, dan susunan kabel jaringan sesuai standar yang dipelajari.</p>
+            <span class="tag">Praktik TJKT</span>
+          </article>
+          <article class="card project-card">
+            <h3>02. Simulasi Topologi Jaringan</h3>
+            <p>Membuat rancangan sederhana hubungan beberapa komputer menggunakan topologi jaringan.</p>
+            <span class="tag">Network Design</span>
+          </article>
+          <article class="card project-card">
+            <h3>03. Pengenalan IP Address</h3>
+            <p>Belajar memahami alamat IP dan perannya agar perangkat dapat berkomunikasi dalam jaringan.</p>
+            <span class="tag">IP Networking</span>
+          </article>
+          <article class="card project-card">
+            <h3>04. Konfigurasi Jaringan Dasar</h3>
+            <p>Latihan memahami pengaturan koneksi dan melakukan pemeriksaan jaringan sederhana.</p>
+            <span class="tag">Basic Configuration</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <div class="contact">
+          <div class="eyebrow">Mari Terhubung</div>
+          <h2 class="section-title">Terima Kasih Sudah Berkunjung!</h2>
+          <p>
+            Saya masih dalam tahap belajar dan terbuka untuk menambah ilmu,
+            pengalaman, serta wawasan di bidang jaringan komputer dan telekomunikasi.
+          </p>
+          <!-- Ganti alamat email di bawah dengan email milikmu jika ingin mengaktifkan tombol kontak. -->
+          <a class="btn primary" href="mailto:emailkamu@example.com">Kirim Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 M. Farel • Portfolio Junior Network Engineer</div>
+  </footer>
+</body>
+</html>
